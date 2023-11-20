@@ -1,12 +1,12 @@
 export interface Submenu {
-  id: number | string;
-  name: string;
+  key: number | string;
+  label: string;
   children?: Submenu[];
 }
 
 export interface MenuEntry {
-  id: number | string;
-  name: string;
+  key: number | string;
+  label: string;
   children?: Submenu[];
   data?:MenuEntry
 }

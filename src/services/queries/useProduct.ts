@@ -17,6 +17,6 @@ export const useGetProduct = (limit = 6, skip = 0) => {
 
   return useQuery([queryKeys.product], fetcher, {
     // cache upload data
-    cacheTime: 100,
+    // cacheTime: 100,
   });
 };
