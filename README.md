@@ -45,10 +45,10 @@ image
     ...
 
 /pages
+
 Home
 Profile
-...
+
 /theme
 
 theme.scss
-
