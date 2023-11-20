@@ -29,28 +29,29 @@ yarn build
 
 ## Cấu Trúc Thư Mục
 
-/src
+src
 
-/assets
+   assets
 
-icon
+   icon
 
-image
+   image
 
-/components
+   components
 
-    Menu
-    Banner
-    Footer
-    ...
+      Menu
+      Banner
+      Footer
+      ...
 
-/pages
+   pages
 
-    Home
-    Profile
-    ...
+      Home
+      Profile
+      ...
 
-/theme
+   theme
 
-theme.scss
+      theme.scss
+
 
