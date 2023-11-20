@@ -1,0 +1,44 @@
+@use '../../themes/theme.scss' as var;
+
+.footer {
+  border-top: 1px solid var.$border_footer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var.$white;
+  padding: 16px 0;
+  .license {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.005em;
+    text-align: left;
+  }
+  .footer-link {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    .footer-link-text {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0em;
+      text-align: left;
+      cursor: pointer;
+
+    }
+  }
+}
+@media (max-width: 767px) {
+  .footer{
+    display: flex;
+    flex-direction: column;
+    padding:  10px 0 !important;
+  }
+  .footer .license{
+    text-align: center;
+    padding: 10px;
+    line-height: 24px;
+  }
+}

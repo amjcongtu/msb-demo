@@ -1,0 +1,18 @@
+.manager-wrapper {
+  margin-left: 10px;
+  .icon-submenu {
+    vertical-align: middle;
+    font-weight: 700;
+  }
+  .line {
+    width: 2px;
+    height: 15px;
+    background: #98a2b3;
+    margin-left: 10px;
+  }
+  @media (max-width: 767px) {
+    .line {
+      display: none;
+    }
+  }
+}

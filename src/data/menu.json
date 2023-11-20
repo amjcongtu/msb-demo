@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Sản phẩm",
+    "id": 1,
+    "children": [
+      {
+        "name": "Thẻ tín dụng",
+        "id": 1.2,
+        "children": [
+          {
+            "id": "1.2.3",
+            "name": "MSB Mastercard mDigi"
+          },
+          {
+            "id": "1.2.4",
+            "name": "MSB Mastercard Super Free"
+          },
+          {
+            "id": "1.2.5",
+            "name": "MSB Visa Online"
+          },
+          {
+            "id": "1.2.6",
+            "name": "MSB Visa Travel"
+          },
+          {
+            "id": "1.2.7",
+            "name": "MSB Visa Signature"
+          }
+        ]
+      },
+      {
+        "name": "Vay",
+        "id": 1.3
+      },
+      {
+        "name": "Bảo hiểm",
+        "id": 1.4
+      }
+    ]
+  },
+  {
+    "name": "So sánh",
+    "id": 2,
+    "children": [
+      {
+        "id": "2.2.1",
+        "name": "MSB Mastercard mDigi"
+      }
+    ]
+  },
+  {
+    "name": "Câu hỏi thường gặp",
+    "id": 3
+  },
+  {
+    "name": "Đăng nhập",
+    "id": 4
+  }
+]

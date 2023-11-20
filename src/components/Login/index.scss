@@ -1,0 +1,33 @@
+@use "../../themes/theme.scss" as var;
+
+.btn-login {
+  background: var.$orange;
+  margin-top: 20px;
+  height: 40px;
+  &:hover {
+    background: var.$orange !important;
+  }
+}
+.btn-close {
+  margin-top: 20px;
+  height: 40px;
+  background: linear-gradient(0deg, var.$white, var.$white),
+    linear-gradient(0deg, var.$orange, var.$orange);
+  border: 1px solid var.$orange;
+  color: var.$orange;
+  &:hover {
+    background: linear-gradient(0deg, var.$white, var.$white),
+      linear-gradient(0deg, var.$orange, var.$orange) !important;
+    border: 1px solid var.$orange !important;
+    color: var.$orange !important;
+  }
+}
+#loginForm {
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}

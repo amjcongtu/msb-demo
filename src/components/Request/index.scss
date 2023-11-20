@@ -1,0 +1,65 @@
+
+@use '../../themes/theme.scss' as var;
+
+.submit-request {
+  background-color: var.$orange;
+  &:hover {
+    background-color: var.$orange !important;
+  }
+}
+.close-icon-request {
+  cursor: pointer;
+}
+.ant-drawer-footer {
+  border: none !important;
+}
+.ant-drawer-content-wrapper {
+  width: 500px !important;
+}
+/* Đổi màu cho Checkbox */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var.$orange !important;
+  border-color: var.$orange !important;
+  &:hover,
+  &:focus {
+    background-color: var.$orange !important;
+    border-color: var.$orange !important;
+  }
+}
+
+
+.ant-radio-checked .ant-radio-inner {
+  background-color: var.$orange !important; /* Màu khi radio được chọn */
+  border-color: var.$orange !important; /* Màu của viền khi radio được chọn */
+  &:hover,
+  &:focus {
+    background-color: var.$orange !important;
+    border-color: var.$orange !important;
+  }
+}
+
+/* Màu mặc định cho Radio */
+.ant-radio-inner {
+    border-color: var.$orange; /* Viền mặc định */
+}
+
+/* Màu khi hover vào Radio */
+.ant-radio-wrapper:hover .ant-radio-inner {
+    border-color: var.$orange; /* Viền khi hover */
+}
+
+
+/* Màu khi hover vào Checkbox */
+.ant-checkbox-wrapper:hover .ant-checkbox-inner {
+    background-color: var.$white; /* Màu khi hover */
+    border-color: var.$orange !important; /* Viền khi hover */
+}
+#requestForm{
+    .name-input{
+        margin-bottom: 50px;
+    }
+    .phone-input{
+        margin-bottom: 30px;
+
+    }
+}

@@ -1,0 +1,96 @@
+@use "../../themes/theme.scss" as var;
+
+.banner-wrapper {
+  background: var.$bg_white;
+  width: 100%;
+  display: block;
+  position: relative;
+  .banner-text {
+    max-width: 420px;
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 48px;
+    }
+    h4 {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 24px;
+      color: var.$color_title;
+      margin: 20px 0;
+    }
+    .buy-now {
+      color: var.$white;
+      background: var.$orange;
+      border-radius: 8px;
+      height: 40px;
+      padding: 0 12px;
+      width: 185px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  }
+  .banner-img {
+    object-fit: cover;
+    min-height: 500px;
+    background-size: cover;
+  }
+  .banner-bg {
+    background: linear-gradient(
+      to bottom,
+      var.$bg_white 50%,
+      var.$bg_white_3 50%
+    );
+  }
+  .wrapper-main {
+    width: 100%;
+    box-shadow: 0px 8px 8px -4px var.$box_shadow;
+    border: 1px solid var.$border_shadow;
+    border-radius: 8px;
+    padding: 30px 20px;
+    background: var.$white;
+    .item-main {
+      margin: 10px 0;
+      text-align: left;
+      .why-choose {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        color: var.$color_gray;
+        max-width: 185px;
+        display: block;
+        margin: auto;
+      }
+      .title-item {
+        font-size: 18px;
+        color: var.$color_gray;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 10px 0;
+      }
+      .sub-title-item {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: var.$color_title;
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper-main {
+    padding: 0 !important;
+  }
+  .item-main {
+    padding: 0 10px !important;
+  }
+  .banner-img {
+    min-height: 150px !important;
+  }
+}
