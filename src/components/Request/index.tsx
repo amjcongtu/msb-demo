@@ -23,8 +23,7 @@ interface Props {
 }
 
 const Request = ({ open, setOpen }: Props) => {
-  const [form] = Form.useForm(); 
-
+  const [form] = Form.useForm();
   const onClose = () => {
     setOpen(false);
     form.resetFields();
@@ -95,6 +94,15 @@ const Request = ({ open, setOpen }: Props) => {
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  const validateWard = (_: any, value: any) => {
+    const provinces = form.getFieldValue("province");
+    if (provinces && !value) {
+      return Promise.reject(`Vui lòng chọn Quận/Huyện`);
+    }
+    return Promise.resolve();
+  };
+
   const drawerFooter = (
     <div style={{ textAlign: "right" }}>
       <Button
@@ -125,6 +133,7 @@ const Request = ({ open, setOpen }: Props) => {
           </Space>
         }
         forceRender={true}
+        getContainer={false}
       >
         <Form
           form={form}
@@ -139,23 +148,13 @@ const Request = ({ open, setOpen }: Props) => {
               label=""
               name="name"
               labelCol={{ xs: 12 }}
-              rules={[
-                { message: "Vui lòng nhập Họ tên" },
-                { validator: validateName },
-              ]}
+              rules={[{ validator: validateName }]}
             >
               <Input placeholder="Nhập họ và tên" size="large" />
             </Form.Item>
           </div>
           <div className="phone-input">
-            <Form.Item
-              label=""
-              name="phone"
-              rules={[
-                { message: "Vui lòng nhập số điện thoại" },
-                validatePhoneNumber(),
-              ]}
-            >
+            <Form.Item label="" name="phone" rules={[validatePhoneNumber()]}>
               <Input placeholder="Nhập số điện thoại" size="large" />
             </Form.Item>
           </div>
@@ -182,9 +181,7 @@ const Request = ({ open, setOpen }: Props) => {
               <Form.Item
                 label=""
                 name="ward"
-                rules={[
-                  { required: form.getFieldValue("province"), message: "Vui lòng chọn Quận/Huyện" },
-                ]}
+                rules={[{ validator: validateWard }]}
               >
                 <Select size="large" placeholder="Chọn Quận/Huyện">
                   {wardOptions.map((ward) => (
@@ -200,7 +197,9 @@ const Request = ({ open, setOpen }: Props) => {
           <Form.Item
             label=""
             name="gender"
-            rules={[{ required: true, message: "Vui lòng chọn đầy đủ thông tin" }]}
+            rules={[
+              { required: true, message: "Vui lòng chọn đầy đủ thông tin" },
+            ]}
           >
             <Radio.Group>
               <Radio value="male">Nam</Radio>

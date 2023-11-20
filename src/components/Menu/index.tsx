@@ -1,5 +1,5 @@
 import { Col, Drawer, Row } from "antd";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { MenuEntry, Submenu } from "../../interface/menu";
 import { Menu } from "antd";
 import LogoIcon from "../../assets/icons/logo.svg";
@@ -14,6 +14,7 @@ import Manager from "./manager";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../router/routePaths";
 import Request from "../Request";
+import { useMenu } from "../../services/queries/useMenu";
 
 const { SubMenu } = Menu;
 
@@ -26,7 +27,7 @@ const MenuCustom = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [isOpenLogin, setOpenLogin] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
+  const { data: menuData, isLoading } = useMenu();
   const onClose = () => {
     setOpen(false);
   };
@@ -43,8 +44,8 @@ const MenuCustom = () => {
   const handleLoginClick = () => {
     setOpenLogin(true);
   };
-  
-  useLayoutEffect(()=>{
+
+  useLayoutEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 767);
     };
@@ -53,54 +54,74 @@ const MenuCustom = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  },[])
+  }, []);
 
   useEffect(() => {
     setSelectedKeys([]);
-
   }, [isAuth]);
 
   const renderSubMenu = (submenuData: Submenu) => {
     if (!submenuData.children) {
-      return <Menu.Item key={submenuData.id}>{submenuData.name} </Menu.Item>;
+      return <Menu.Item key={submenuData.key}>{submenuData.label} </Menu.Item>;
     }
 
     return (
-      <SubMenu key={submenuData.id} title={submenuData.name}>
+      <SubMenu key={submenuData.key} title={submenuData.label}>
         {submenuData.children.map((subItem) => renderSubMenu(subItem))}
       </SubMenu>
     );
   };
 
+  const loopMenuItem = useMemo(() => {
+    return MenuData.map((i) => {
+      if (i.children) {
+        return {
+          ...i,
+          icon: DownIcon,
+        };
+      }
+      return i;
+    });
+  }, []);
+
+  console.log(loopMenuItem, "loopMenuItem");
+
   const renderMenu = (menuData: MenuEntry[]) => {
     return menuData.map((menuItem) => {
       if (!menuItem.children) {
-        if (menuItem.name === "Đăng nhập") {
+        if (menuItem.label === "Đăng nhập") {
           return (
             <Menu.Item
               style={isAuth ? { display: "none" } : { display: "block" }}
-              key={menuItem.name}
+              key={menuItem.label}
               onClick={handleLoginClick}
             >
-              {menuItem.name}
+              {menuItem.label}
             </Menu.Item>
           );
         }
-        return <Menu.Item key={menuItem.id}>{menuItem.name}</Menu.Item>;
+        if (menuItem.key === "phone") {
+           return (
+            <Menu.Item
+              key={menuItem.label}
+              icon={<img src={PhoneIcon}/>}
+            >
+              {menuItem.label}
+            </Menu.Item>
+          );
+        }
+
+        return <Menu.Item key={menuItem.key}>{menuItem.label}</Menu.Item>;
       }
 
       return (
         <SubMenu
-          key={menuItem.name}
+          key={menuItem.label}
           title={
             <span className="menu-item">
-              {menuItem.name}{" "}
+              {menuItem.label}{" "}
               {menuItem.children.length > 0 && (
-                <img
-                  className="icon-submenu"
-                  style={{ verticalAlign: "middle", fontWeight: "700" }}
-                  src={DownIcon}
-                />
+                <img className="icon-submenu" src={DownIcon} />
               )}
             </span>
           }
@@ -127,7 +148,7 @@ const MenuCustom = () => {
             <Row>
               <Col xl={24} lg={24} md={24} sm={24} xs={24}>
                 <div className="row-flex-end ">
-                  {!isMobile && (
+                  {!isMobile && !isLoading && (
                     <Menu
                       mode="horizontal"
                       selectedKeys={selectedKeys}
@@ -142,15 +163,11 @@ const MenuCustom = () => {
                         </span>
                       }
                     >
-                      {renderMenu(MenuData)}
+                      {renderMenu(menuData)}
                     </Menu>
                   )}
 
                   <div className="box-action">
-                    <span className="phone-item">
-                      <img src={PhoneIcon} />
-                      1900 6083
-                    </span>
                     <button className="btn-quest" onClick={showDrawer}>
                       Yêu cầu tư vấn
                     </button>
@@ -181,13 +198,15 @@ const MenuCustom = () => {
           }}
           open={openMenu}
         >
-          <Menu
-            mode="inline"
-            selectedKeys={selectedKeys}
-            onClick={({ key }) => handleMenuItemClick(key)}
-          >
-            {renderMenu(MenuData)}
-          </Menu>
+          {!isLoading && (
+            <Menu
+              mode="inline"
+              selectedKeys={selectedKeys}
+              onClick={({ key }) => handleMenuItemClick(key)}
+            >
+              {renderMenu(menuData)}
+            </Menu>
+          )}
         </Drawer>
       )}
       <Login isOpen={isOpenLogin} setIsOpen={setOpenLogin} />

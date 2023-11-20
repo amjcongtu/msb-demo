@@ -101,6 +101,31 @@
   transform-origin: center center;
   height: 16px !important;
 }
+.menu-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  .menu-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+  }
+  .hidden-menu-item{
+    display: none !important;
+  }
+}
+
+.icon-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon-down-submenu {
+  margin-left: 8px; // Adjust the margin as needed
+}
 
 /* Hiển thị menu dọc trên các màn hình nhỏ hơn hoặc bằng 767px */
 @media (max-width: 767px) {

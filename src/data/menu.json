@@ -1,60 +1,64 @@
 [
   {
-    "name": "Sản phẩm",
-    "id": 1,
+    "label": "Sản phẩm",
+    "key": " product",
     "children": [
       {
-        "name": "Thẻ tín dụng",
-        "id": 1.2,
+        "label": "Thẻ tín dụng",
+        "key": " 1.2",
         "children": [
           {
-            "id": "1.2.3",
-            "name": "MSB Mastercard mDigi"
+            "key": "1.2.3",
+            "label": "MSB Mastercard mDigi"
           },
           {
-            "id": "1.2.4",
-            "name": "MSB Mastercard Super Free"
+            "key": "1.2.4",
+            "label": "MSB Mastercard Super Free"
           },
           {
-            "id": "1.2.5",
-            "name": "MSB Visa Online"
+            "key": "1.2.5",
+            "label": "MSB Visa Online"
           },
           {
-            "id": "1.2.6",
-            "name": "MSB Visa Travel"
+            "key": "1.2.6",
+            "label": "MSB Visa Travel"
           },
           {
-            "id": "1.2.7",
-            "name": "MSB Visa Signature"
+            "key": "1.2.7",
+            "label": "MSB Visa Signature"
           }
         ]
       },
       {
-        "name": "Vay",
-        "id": 1.3
+        "label": "Vay",
+        "key": "1.3"
       },
       {
-        "name": "Bảo hiểm",
-        "id": 1.4
+        "label": "Bảo hiểm",
+        "key": " 1.4"
       }
     ]
   },
   {
-    "name": "So sánh",
-    "id": 2,
+    "label": "So sánh",
+    "key": "compare",
     "children": [
       {
-        "id": "2.2.1",
-        "name": "MSB Mastercard mDigi"
+        "key": "2.2.1",
+        "label": "MSB Mastercard mDigi"
       }
     ]
   },
   {
-    "name": "Câu hỏi thường gặp",
-    "id": 3
+    "label": "Câu hỏi thường gặp",
+    "key": "question"
   },
   {
-    "name": "Đăng nhập",
-    "id": 4
+    "label": "Đăng nhập",
+    "key": "login"
+  },
+  {
+    "label": "1900 6083",
+    "key": "phone"
   }
 ]

@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getCookieStorage, removeOneCookieStorage } from '../helper/storage';
+import { getCookieStorage, removeStorageJwtToken } from '../helper/storage';
+
 const axiosClient = axios.create({
 	baseURL: import.meta.env.VITE_APP_BASE_API_URL,
 });
@@ -29,11 +30,11 @@ axiosClient.interceptors.response.use(
 
 		switch (error.response?.status) {
 			case 401:
-				removeOneCookieStorage('accessToken');
+				removeStorageJwtToken();
 				break;
 			case 403:
 				if (error.response.data?.code === 403) {
-					removeOneCookieStorage('accessToken');
+					removeStorageJwtToken();
 				}
 				break;
 

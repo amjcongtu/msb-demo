@@ -1,23 +1,29 @@
-## Tên dự án 
+## Tên dự án
 
 MSB
 
-Để bắt đầu với dự án này, bạn cần cài đặt [Node.js](https://nodejs.org/) và [npm](https://www.npmjs.com/).
+Để bắt đầu với dự án này, bạn cần cài đặt [Node.js](https://nodejs.org/) và [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/).
+
+Yêu cầu node >= 16 , react >= 16
 
 ### Cài Đặt
 
 1. Clone repository:
 
-   ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/amjcongtu/msb-demo.git
 
 Di chuyển vào thư mục dự án:
 
-cd msb-test
+cd msb-demo
 
-## Cài đặt 
+## Cài đặt
 
-yarn install or npm install
+yarn install hoặc npm install
+
+## Tạo file .env
+
+VITE_APP_BASE_API_URL=https://dummyjson.com  
+
 
 ## Chạy ứng dụng
 
@@ -27,27 +33,59 @@ yarn dev
 
 yarn build
 
+
 ## Cấu Trúc Thư Mục
 
-/src
-  /assets
-  icon
-  image
-  /components
-    Menu
-    Banner
-    Footer
-    ...
-  /pages
-    Home
-    Profile
-    ...
-  /theme
-  theme.scss
-  /utils
-    api.js
-    helper.js
-    ...
-  App.js
-  index.js
+src
 
+   assets  
+
+      icon
+      image
+
+   components
+
+      Menu
+      Banner
+      Footer
+      ...
+
+   context
+
+      authContext
+
+   data
+
+      Menu.json
+
+   helper
+
+      storage get set cookies
+
+   hook
+
+      useAuth
+
+   interface
+
+   pages
+
+      Home
+      Profile
+      ...
+   
+   router
+
+      AuthRouter
+      AppRouter
+
+   service
+   
+      queries
+      apiClient
+
+   theme
+
+   utils
+
+App

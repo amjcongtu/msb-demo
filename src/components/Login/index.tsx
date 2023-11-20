@@ -21,7 +21,8 @@ const Login = ({ isOpen, setIsOpen }: Props) => {
   const navigate = useNavigate();
   const { login } = useLoginMutation();
   const { setAuth } = useAuth();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+   
   const onFinish = (values: FormLoginEntry) => {
     handleLogin(values);
   };
@@ -50,7 +51,7 @@ const Login = ({ isOpen, setIsOpen }: Props) => {
       };
       error();
     }
-  }, []);
+  }, [login, messageApi, navigate, setAuth, setIsOpen]);
 
   const handleCancel = () => {
     onReset();
