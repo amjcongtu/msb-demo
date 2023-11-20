@@ -30,24 +30,25 @@ yarn build
 ## Cấu Trúc Thư Mục
 
 /src
-  /assets
-  icon
-  image
-  /components
+
+/assets
+
+icon
+
+image
+
+/components
+
     Menu
     Banner
     Footer
     ...
-  /pages
-    Home
-    Profile
-    ...
-  /theme
-  theme.scss
-  /utils
-    api.js
-    helper.js
-    ...
-  App.js
-  index.js
+
+/pages
+Home
+Profile
+...
+/theme
+
+theme.scss
 
