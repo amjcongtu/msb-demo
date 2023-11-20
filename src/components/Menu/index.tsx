@@ -1,20 +1,19 @@
 import { Col, Drawer, Row } from "antd";
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { MenuEntry, Submenu } from "../../interface/menu";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Menu } from "antd";
+import Manager from "./manager";
+import Request from "../Request";
+import Login from "../Login";
 import LogoIcon from "../../assets/icons/logo.svg";
 import PhoneIcon from "../../assets/icons/phone.svg";
 import DownIcon from "../../assets/icons/down.svg";
-import "./menu.scss";
 import { MenuOutlined } from "@ant-design/icons";
-import Login from "../Login";
-import MenuData from "../../data/menu.json";
 import { useAuth } from "../../hooks/useAuth";
-import Manager from "./manager";
+import { useMenu } from "../../services/queries/useMenu";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../router/routePaths";
-import Request from "../Request";
-import { useMenu } from "../../services/queries/useMenu";
+import { MenuEntry, Submenu } from "../../interface/menu";
+import "./menu.scss";
 
 const { SubMenu } = Menu;
 
@@ -72,46 +71,23 @@ const MenuCustom = () => {
     );
   };
 
-  const loopMenuItem = useMemo(() => {
-    return MenuData.map((i) => {
-      if (i.children) {
-        return {
-          ...i,
-          icon: DownIcon,
-        };
-      }
-      return i;
-    });
-  }, []);
-
-  console.log(loopMenuItem, "loopMenuItem");
-
   const renderMenu = (menuData: MenuEntry[]) => {
     return menuData.map((menuItem) => {
       if (!menuItem.children) {
-        if (menuItem.label === "Đăng nhập") {
-          return (
-            <Menu.Item
-              style={isAuth ? { display: "none" } : { display: "block" }}
-              key={menuItem.label}
-              onClick={handleLoginClick}
-            >
-              {menuItem.label}
-            </Menu.Item>
-          );
-        }
-        if (menuItem.key === "phone") {
-           return (
-            <Menu.Item
-              key={menuItem.label}
-              icon={<img src={PhoneIcon}/>}
-            >
-              {menuItem.label}
-            </Menu.Item>
-          );
-        }
-
-        return <Menu.Item key={menuItem.key}>{menuItem.label}</Menu.Item>;
+        return (
+          <Menu.Item
+            style={
+              menuItem.key === "login" && isAuth
+                ? { display: "none" }
+                : { display: "block" }
+            }
+            key={menuItem.label}
+            onClick={menuItem.key === "login" ? handleLoginClick : undefined}
+            icon={menuItem.key === "phone" && <img src={PhoneIcon} />}
+          >
+            {menuItem.label}
+          </Menu.Item>
+        );
       }
 
       return (
