@@ -46,8 +46,8 @@ image
 
 /pages
 
-Home
-Profile
+   Home
+   Profile
 
 /theme
 
