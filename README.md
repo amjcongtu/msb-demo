@@ -31,11 +31,10 @@ yarn build
 
 src
 
-   assets
+   assets  
 
-   icon
-
-   image
+      icon
+      image
 
    components
 
@@ -44,14 +43,26 @@ src
       Footer
       ...
 
+   context
+
+   helper
+
+   hook
+
+   interface
+
    pages
 
       Home
       Profile
       ...
+   
+   router
+
+   service
 
    theme
 
-      theme.scss
+   utils
 
-
+App
